@@ -1,0 +1,19 @@
+{
+  "name": "quiz_ox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie": "^0.4.1",
+    "express": "^4.17.1",
+    "google-auth-library": "^7.10.4",
+    "socket.io": "^4.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

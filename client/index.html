@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/balloon-css/balloon.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="board">
+      <div class="side o-side"></div>
+      <div class="side x-side"></div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <div class="inspectors"></div>
+    <form class="master-panel">
+      <p>Please select the correct answer for the next round:</p>
+      <div class="answer-selector">
+        <div class="option">
+          <input type="radio" id="o-option" name="answer" value="O" checked />
+          <label for="o">O</label>
+        </div>
+        <div class="option">
+          <input type="radio" id="o-option" name="answer" value="X" />
+          <label for="x">X</label>
+        </div>
+      </div>
+      <button class="start" type="submit">Start Round</button>
+      <button class="reset">Reset Game</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="/game.js"></script>
+  </body>
+</html>

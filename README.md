@@ -1,3 +1,3 @@
 # ox-quiz
 
-Online multiplayer quiz game.
+Online multiplayer quiz game
