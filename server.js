@@ -40,7 +40,7 @@ io.on("connection", async function (socket) {
       answer: Math.random() < 0.5 ? "O" : "X",
     };
 
-    if (config.game_master_email === payload.email) {
+    if (config.game_masters.includes(payload.email)) {
       players[socket.id].answer = "";
       socket.emit("promoteToGameMaster");
     }
@@ -59,7 +59,7 @@ io.on("connection", async function (socket) {
 
     socket.on("newRound", ({ answer }) => {
       const player = players[socket.id];
-      if (round || player.email !== config.game_master_email) return;
+      if (round || config.game_masters.includes(player.email)) return;
       round = { answer, duration: config.round_duration_sec * 1000 };
 
       io.emit("roundStart", round.duration);
@@ -75,9 +75,9 @@ io.on("connection", async function (socket) {
 
     socket.on("reset", () => {
       const player = players[socket.id];
-      if (player.email === config.game_master_email) {
+      if (config.game_masters.includes(player.email)) {
         Object.values(players).forEach((player) => {
-          if (player.email !== config.game_master_email)
+          if (!config.game_masters.includes(player.email))
             player.answer = Math.random() < 0.5 ? "O" : "X";
         });
         io.emit("players", Object.values(players));
