@@ -55,11 +55,11 @@ body {
 }
 
 .o-side::before {
-  content: "O";
+  content: "A";
 }
 
 .x-side::before {
-  content: "X";
+  content: "B";
 }
 
 .side::before {
