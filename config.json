@@ -1,5 +1,5 @@
 {
-  "game_masters": ["somebody@gmail.com", "someoneelse@gmail.com"],
+  "game_masters": ["myemail@gmail.com", "myotheremail@gmail.com"],
   "client_id": "my-google-client-id",
   "round_duration_sec": 10
 }

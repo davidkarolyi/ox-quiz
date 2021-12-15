@@ -59,7 +59,7 @@ io.on("connection", async function (socket) {
 
     socket.on("newRound", ({ answer }) => {
       const player = players[socket.id];
-      if (round || config.game_masters.includes(player.email)) return;
+      if (round || !config.game_masters.includes(player.email)) return;
       round = { answer, duration: config.round_duration_sec * 1000 };
 
       io.emit("roundStart", round.duration);
@@ -93,6 +93,8 @@ io.on("connection", async function (socket) {
   }
 });
 
-server.listen(3000, function () {
-  console.log(`Listening on ${3000}`);
+const port = process.env.PORT || 3000;
+
+server.listen(port, function () {
+  console.log(`Listening on ${port}`);
 });
