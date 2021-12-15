@@ -5,6 +5,7 @@ const cookie = require("cookie");
 const config = require("./config.json");
 const { OAuth2Client } = require("google-auth-library");
 
+const PORT = process.env.PORT || 3000;
 const client = new OAuth2Client(config.client_id);
 const app = express();
 const server = http.createServer(app);
@@ -92,6 +93,6 @@ io.on("connection", async function (socket) {
   }
 });
 
-server.listen(3000, function () {
-  console.log(`Listening on ${3000}`);
+server.listen(PORT, function () {
+  console.log(`Listening on ${PORT}`);
 });
