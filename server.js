@@ -86,6 +86,7 @@ io.on("connection", async function (socket) {
 
     socket.on("disconnect", function () {
       delete players[socket.id];
+      io.emit("players", Object.values(players));
     });
   } catch (error) {
     socket.emit("error", error.message);
