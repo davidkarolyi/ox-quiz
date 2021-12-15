@@ -12,6 +12,7 @@ const io = new Server(server);
 
 const players = {};
 let round = null;
+let isGameStarted = false;
 
 app.use(express.static(__dirname + "/client"));
 
@@ -45,6 +46,10 @@ io.on("connection", async function (socket) {
       socket.emit("promoteToGameMaster");
     }
 
+    if (isGameStarted) {
+      players[socket.id].answer = "";
+    }
+
     socket.emit("self", players[socket.id]);
     io.emit("players", Object.values(players));
 
@@ -60,6 +65,7 @@ io.on("connection", async function (socket) {
     socket.on("newRound", ({ answer }) => {
       const player = players[socket.id];
       if (round || !config.game_masters.includes(player.email)) return;
+      isGameStarted = true;
       round = { answer, duration: config.round_duration_sec * 1000 };
 
       io.emit("roundStart", round.duration);
@@ -76,6 +82,7 @@ io.on("connection", async function (socket) {
     socket.on("reset", () => {
       const player = players[socket.id];
       if (config.game_masters.includes(player.email)) {
+        isGameStarted = false;
         Object.values(players).forEach((player) => {
           if (!config.game_masters.includes(player.email))
             player.answer = Math.random() < 0.5 ? "O" : "X";
