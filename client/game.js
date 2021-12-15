@@ -1,6 +1,8 @@
 const token = Cookies.get("token");
 if (!token) window.location.replace("/login.html");
 anime.suspendWhenDocumentHidden = false;
+const DEFAULT_PROFILE_IMAGE =
+  "https://www.gravatar.com/avatar/92988b53fc5b9e6136b23a99679bf996.jpg?s=512&d=mp&r=g";
 
 const progress = document.querySelector(".progress-bar > .progress");
 const xSide = document.querySelector(".x-side");
@@ -143,7 +145,7 @@ function createPlayer(playerInfo) {
 
   const image = document.createElement("img");
   image.setAttribute("referrerpolicy", "no-referrer");
-  image.src = playerInfo.imageURL;
+  image.src = playerInfo.imageURL || DEFAULT_PROFILE_IMAGE;
 
   player.appendChild(image);
 
