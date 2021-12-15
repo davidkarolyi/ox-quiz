@@ -1,5 +1,5 @@
 {
-  "game_masters": ["myemail@gmail.com", "myotheremail@gmail.com"],
-  "client_id": "my-google-client-id",
+  "game_masters": ["david.karolyi@snapsoft.hu"],
+  "client_id": "649651577987-cs4479fcigmt6e25licj30409i42gmvh.apps.googleusercontent.com",
   "round_duration_sec": 10
 }
